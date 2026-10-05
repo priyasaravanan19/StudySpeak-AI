@@ -1,0 +1,352 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudySpeak AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">🎙️</div>
+            <div>
+                <h2>StudySpeak</h2>
+                <span>AI Learning Assistant</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#" class="nav-link active">
+                <span>🏠</span> Dashboard
+            </a>
+
+            <a href="#notes" class="nav-link">
+                <span>📝</span> My Notes
+            </a>
+
+            <a href="#pdf" class="nav-link">
+                <span>📄</span> PDF Reader
+            </a>
+
+            <a href="#voice" class="nav-link">
+                <span>🎤</span> Voice Notes
+            </a>
+
+            <a href="#audio" class="nav-link">
+                <span>🔊</span> Audio
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="mini-card">
+                <span>✨</span>
+                <div>
+                    <strong>Study Smarter</strong>
+                    <p>Listen instead of reading.</p>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <div>
+                <p class="welcome">WELCOME BACK 👋</p>
+                <h1>StudySpeak AI</h1>
+            </div>
+
+            <div class="profile">
+                <div class="profile-icon">P</div>
+                <div>
+                    <strong>Student</strong>
+                    <span>Learning Mode</span>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="badge">🤖 AI POWERED STUDY TOOL</span>
+
+                <h2>Turn your study material<br> into <span>spoken knowledge.</span>
+                </h2>
+
+                <p>
+                    Upload your PDFs, paste your notes, or speak your thoughts. StudySpeak AI helps you learn through text and voice.
+                </p>
+
+                <div class="hero-buttons">
+                    <button onclick="scrollToNotes()" class="primary-btn">
+                        Start Studying →
+                    </button>
+
+                    <button onclick="document.getElementById('pdfInput').click()" class="secondary-btn">
+                        📄 Upload PDF
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="hero-visual">
+
+                <div class="sound-card">
+
+                    <div class="sound-header">
+                        <span>🔊 AI Voice</span>
+                        <span class="live">● LIVE</span>
+                    </div>
+
+                    <div class="wave">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+
+                    <div class="sound-time">
+                        <span>00:00</span>
+                        <span>02:45</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STAT CARDS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon purple">📝</div>
+                <div>
+                    <span>Words</span>
+                    <h3 id="wordCount">0</h3>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon blue">🔤</div>
+                <div>
+                    <span>Characters</span>
+                    <h3 id="charCount">0</h3>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon orange">📖</div>
+                <div>
+                    <span>Sentences</span>
+                    <h3 id="sentenceCount">0</h3>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">⏱️</div>
+                <div>
+                    <span>Reading Time</span>
+                    <h3 id="readingTime">0 min</h3>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- NOTES SECTION -->
+        <section class="workspace" id="notes">
+
+            <div class="section-title">
+                <div>
+                    <p class="small-title">CREATE AUDIO</p>
+                    <h2>Study Notes</h2>
+                </div>
+
+                <button class="clear-btn" onclick="clearText()">
+                    🗑 Clear
+                </button>
+            </div>
+
+
+            <div class="editor-card">
+
+                <div class="editor-toolbar">
+
+                    <div class="toolbar-left">
+                        <span class="tool-label">YOUR NOTES</span>
+                    </div>
+
+                    <div class="toolbar-right">
+                        <button onclick="increaseFont()">A+</button>
+                        <button onclick="decreaseFont()">A−</button>
+                    </div>
+
+                </div>
+
+                <textarea id="textInput" placeholder="Paste your study notes here...
+
+Example:
+Photosynthesis is the process by which green plants convert light energy into chemical energy. It mainly takes place in the chloroplasts of plant cells."></textarea>
+
+                <div class="editor-footer">
+
+                    <span id="textStatus">
+                        Start typing your study material...
+                    </span>
+
+                    <button class="speak-btn" onclick="generateSpeech()">
+                        🔊 Convert to Speech
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PDF SECTION -->
+        <section class="pdf-section" id="pdf">
+
+            <div class="section-title">
+                <div>
+                    <p class="small-title">DOCUMENT READER</p>
+                    <h2>PDF to Speech</h2>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+
+                <div class="upload-icon">
+                    📄
+                </div>
+
+                <h3>Upload your study PDF</h3>
+
+                <p>
+                    Extract text from your notes and convert them into speech.
+                </p>
+
+                <input type="file" id="pdfInput" accept=".pdf" hidden onchange="uploadPDF()">
+
+                <button class="upload-btn" onclick="document.getElementById('pdfInput').click()">
+                    Choose PDF
+                </button>
+
+                <p id="pdfStatus" class="upload-status">
+                    No file selected
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- VOICE SECTION -->
+        <section class="voice-section" id="voice">
+
+            <div class="section-title">
+                <div>
+                    <p class="small-title">VOICE INPUT</p>
+                    <h2>Speak Your Notes</h2>
+                </div>
+            </div>
+
+            <div class="voice-card">
+
+                <div class="microphone">
+                    🎤
+                </div>
+
+                <h3>Speech-to-Text</h3>
+
+                <p>
+                    Speak your study notes and convert your voice into editable text.
+                </p>
+
+                <button id="recordBtn" class="record-btn" onclick="toggleRecording()">
+                    🎤 Start Recording
+                </button>
+
+                <p id="recordStatus">
+                    Click the button to start.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- AUDIO PLAYER -->
+        <section class="audio-section" id="audio">
+
+            <div class="section-title">
+                <div>
+                    <p class="small-title">GENERATED AUDIO</p>
+                    <h2>Listen & Learn</h2>
+                </div>
+            </div>
+
+            <div class="audio-card">
+
+                <div class="audio-icon">
+                    🎧
+                </div>
+
+                <div class="audio-info">
+                    <h3>Your Study Audio</h3>
+                    <p id="audioStatus">
+                        Generate speech from your notes to listen here.
+                    </p>
+
+                    <audio id="audioPlayer" controls></audio>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+            <p>© 2026 StudySpeak AI • Learn smarter with AI-powered voice technology.</p>
+        </footer>
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
+```

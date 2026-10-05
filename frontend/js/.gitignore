@@ -1,0 +1,77 @@
+# ==========================
+# Python
+# ==========================
+
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# ==========================
+# Virtual Environment
+# ==========================
+
+venv/
+.venv/
+env/
+ENV/
+
+# ==========================
+# Environment Variables
+# ==========================
+
+.env
+.env.*
+!.env.example
+
+# ==========================
+# Uploaded Files
+# ==========================
+
+uploads/*
+!uploads/.gitkeep
+
+# Generated audio files
+uploads/audio/*
+!uploads/audio/.gitkeep
+
+# Uploaded PDFs
+uploads/*.pdf
+
+# ==========================
+# IDE / VS Code
+# ==========================
+
+.vscode/
+*.code-workspace
+
+# ==========================
+# OS Files
+# ==========================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================
+# Logs
+# ==========================
+
+*.log
+
+# ==========================
+# Python Testing
+# ==========================
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ==========================
+# Build Files
+# ==========================
+
+build/
+dist/
+*.egg-info/
+```
