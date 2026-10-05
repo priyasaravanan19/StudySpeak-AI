@@ -1,0 +1,44 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables
+.env
+
+# VS Code
+.vscode/
+
+# Uploaded files
+uploads/*
+!uploads/.gitkeep
+
+# Generated audio
+uploads/audio/*
+!uploads/audio/.gitkeep
+
+# PDF uploads
+uploads/*.pdf
+
+# Logs
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
